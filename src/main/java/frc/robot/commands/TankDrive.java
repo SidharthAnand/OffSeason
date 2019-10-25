@@ -26,23 +26,33 @@ public class TankDrive extends Command {
     Robot.driveTrain.setLeftMotors(Robot.oi.getLeftY());
     Robot.driveTrain.setRightMotors(Robot.oi.getRightY());
 
-    if (Robot.oi.getButtonX()){
-      Robot.driveTrain.isArcade = !Robot.driveTrain.isArcade;
-    }
+    Robot.oi.joystickX.cancelWhenPressed(Robot.tankDrive);
+
   }
 
   @Override
   protected boolean isFinished() {
-    return Robot.driveTrain.isArcade;
+    // if(Robot.oi.getButtonX()){ 
+    //   Robot.arcadeDrive.start();
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
+
+    return false;
   }
 
   @Override
   protected void end() {
-
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
       System.out.println("End Tank Drive Command");
+
+      Robot.arcadeDrive.start();
       
+      
+
   }
 
   @Override
