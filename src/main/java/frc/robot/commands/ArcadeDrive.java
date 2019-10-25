@@ -13,7 +13,10 @@ import frc.robot.Robot;
 
 public class ArcadeDrive extends Command {
 
+  private long counter = 0; 
+
   public ArcadeDrive() {
+    
     requires(Robot.driveTrain);
   }
 
@@ -24,30 +27,39 @@ public class ArcadeDrive extends Command {
   @Override
   protected void execute() {
     // Left and right
-    Robot.driveTrain.setRightMotors(Robot.oi.getRightX());
-    Robot.driveTrain.setLeftMotors(-Robot.oi.getRightX());
+    Robot.driveTrain.setLeftMotors(Robot.oi.getRightX()+Robot.oi.getLeftY());
+    Robot.driveTrain.setRightMotors(-Robot.oi.getRightX()+Robot.oi.getLeftY());
 
-    // Front and Back
-    Robot.driveTrain.setLeftMotors(Robot.oi.getLeftY());
-    Robot.driveTrain.setRightMotors(Robot.oi.getLeftY());
-
-    if (Robot.oi.getButtonX()){
-      Robot.driveTrain.isArcade = !Robot.driveTrain.isArcade;
-    }
+    // if (counter % 100 == 0){
+    //   System.out.println("Right Joystick X " + Robot.oi.getRightX());
+    //   System.out.println("Left Joystick Y " + Robot.oi.getLeftY());
+    // }
+    
+    Robot.oi.joystickX.cancelWhenPressed(Robot.arcadeDrive);
   }
 
   @Override
   protected boolean isFinished() {
-    return !Robot.driveTrain.isArcade;
-  
+    
+    // if(Robot.oi.getButtonX()){ 
+    //   Robot.tankDrive.start();
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
+    
+    return false;
   }
 
   @Override
   protected void end() {
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
-
       System.out.println("End Arcade Command");
+
+      Robot.tankDrive.start();
+      
   }
 
   @Override

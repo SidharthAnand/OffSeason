@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain;
   public static OI oi;
   public static ArcadeDrive arcadeDrive;
+  public static TankDrive tankDrive;
 
   @Override
   public void robotInit() {
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
     intake = new ExampleIntake();
     driveTrain = new DriveTrain();
     arcadeDrive = new ArcadeDrive();
+    tankDrive = new TankDrive();
 
     System.out.println("Robot Initialized");
   }
@@ -108,6 +110,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
+
     Scheduler.getInstance().run();
   }
 

@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -22,20 +23,20 @@ public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   
-  private VictorSPX leftMotor1;
+  private TalonSRX leftMotor1;
   private VictorSPX leftMotor2;
   private VictorSPX leftMotor3;
-  private VictorSPX rightMotor1;
+  private TalonSRX rightMotor1;
   private VictorSPX rightMotor2;
   private VictorSPX rightMotor3;
 
   public boolean isArcade = true;
 
   public DriveTrain(){
-    leftMotor1 = new VictorSPX(RobotMap.LEFT_MOTOR_1);
+    leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
     leftMotor2 = new VictorSPX(RobotMap.LEFT_MOTOR_2);
     leftMotor3 = new VictorSPX(RobotMap.LEFT_MOTOR_3);
-    rightMotor1 = new VictorSPX(RobotMap.RIGHT_MOTOR_1);
+    rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
     rightMotor2 = new VictorSPX(RobotMap.RIGHT_MOTOR_2);
     rightMotor3 = new VictorSPX(RobotMap.RIGHT_MOTOR_3);
 
