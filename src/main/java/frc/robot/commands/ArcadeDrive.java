@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 import frc.robot.Robot;
 
@@ -29,13 +30,9 @@ public class ArcadeDrive extends Command {
     // Left and right
     Robot.driveTrain.setLeftMotors(Robot.oi.getRightX()+Robot.oi.getLeftY());
     Robot.driveTrain.setRightMotors(-Robot.oi.getRightX()+Robot.oi.getLeftY());
-
-    // if (counter % 100 == 0){
-    //   System.out.println("Right Joystick X " + Robot.oi.getRightX());
-    //   System.out.println("Left Joystick Y " + Robot.oi.getLeftY());
-    // }
+    SmartDashboard.putString("Command active", " Arcade Drive");
     
-    Robot.oi.joystickX.cancelWhenPressed(Robot.arcadeDrive);
+    //Robot.oi.joystickX.cancelWhenPressed(Robot.arcadeDrive);
   }
 
   @Override
@@ -58,7 +55,7 @@ public class ArcadeDrive extends Command {
       Robot.driveTrain.setRightMotors(0);
       System.out.println("End Arcade Command");
 
-      Robot.tankDrive.start();
+      //Robot.tankDrive.start();
       
   }
 

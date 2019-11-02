@@ -24,6 +24,9 @@ public class OI {
   
   public OI() {
     joystickX = new JoystickButton(controllerOne, RobotMap.GamePadButtonX);
+
+    joystickX.toggleWhenPressed(Robot.tankDrive);
+    joystickX.toggleWhenPressed(Robot.arcadeDrive);
   }
   
   private XboxController controllerOne = new XboxController(RobotMap.CONTROLLER_ONE);

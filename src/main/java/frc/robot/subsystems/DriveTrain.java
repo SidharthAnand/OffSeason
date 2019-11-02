@@ -30,7 +30,7 @@ public class DriveTrain extends Subsystem {
   private VictorSPX rightMotor2;
   private VictorSPX rightMotor3;
 
-  public boolean isArcade = true;
+  private double percentSpeed = 0.4;
 
   public DriveTrain(){
     leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
@@ -49,20 +49,20 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
 
-    //setDefaultCommand(new TankDrive());
+    setDefaultCommand(new ArcadeDrive());
   }
 
   public void setLeftMotors(double speed){
-    leftMotor1.set(ControlMode.PercentOutput, speed*0.5);
-    leftMotor2.set(ControlMode.PercentOutput, speed*0.5);
-    leftMotor3.set(ControlMode.PercentOutput, speed*0.5);
+    leftMotor1.set(ControlMode.PercentOutput, speed*percentSpeed);
+    leftMotor2.set(ControlMode.PercentOutput, speed*percentSpeed);
+    leftMotor3.set(ControlMode.PercentOutput, speed*percentSpeed);
 
   }
 
   public void setRightMotors(double speed){
-    rightMotor1.set(ControlMode.PercentOutput, speed*0.5);
-    rightMotor2.set(ControlMode.PercentOutput, speed*0.5);
-    rightMotor3.set(ControlMode.PercentOutput, speed*0.5);
+    rightMotor1.set(ControlMode.PercentOutput, speed*percentSpeed);
+    rightMotor2.set(ControlMode.PercentOutput, speed*percentSpeed);
+    rightMotor3.set(ControlMode.PercentOutput, speed*percentSpeed);
 
   }
 
